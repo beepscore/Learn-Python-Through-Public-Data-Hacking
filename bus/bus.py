@@ -32,8 +32,9 @@ def find_buses(filename):
     # find all bus elements
     buses = doc.findall('bus')
 
-    # documentation 'https://developers.google.com/maps/documentation/staticmaps/'
-    map_url = 'https://developers.google.com/maps/documentation/staticmaps/'
+    # https://developers.google.com/maps/documentation/staticmaps/
+    # http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false&markers=41.98062,-87.668452
+    map_url_start = 'http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false'
 
     # TODO: change to tuple?
     daves_latitude = 41.98062
@@ -43,7 +44,11 @@ def find_buses(filename):
         dd = bus.find('dd').text
         is_northbound = dd is 'Northbound'
         latitude = float(bus.find('lat').text)
+        longitude = float(bus.find('lon').text)
         if latitude >= daves_latitude:
             # bus id 4068 41.99755483598852
             print('bus id', bus.find('id').text, latitude, 'dd', dd)
-            webbrowser.open(map_url)
+
+            # f requires python >= 3.6
+            markers = f"&markers={latitude}, {longitude}"
+            webbrowser.open(map_url_start + markers)
