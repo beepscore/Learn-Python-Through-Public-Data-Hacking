@@ -31,6 +31,7 @@ The program downloads bus locations.
 cd project root directory
 
 activate virtual environment  
+
     python3 -m main
 
 ## output file
@@ -39,6 +40,7 @@ Note the xml output file has one line, then many blank lines, then data.
 # Appendix virtual environment
 ### install virtual environment
 cd project root directory  
+
     python3 -m venv ./venv
 
 ## activate virtual environment
@@ -57,5 +59,6 @@ venv should show at beginning of command prompt
 ## install items in requirements file
 First activate virtual environment  
 Then
+
     pip3 install -r requirements.txt
 
