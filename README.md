@@ -39,7 +39,8 @@ Note the xml output file has one line, then many blank lines, then data.
 
 # Appendix virtual environment
 ### install virtual environment
-cd project root directory
+cd project root directory  
+
 python3 -m venv ./venv
 
 ## activate virtual environment
@@ -47,6 +48,7 @@ cd project root directory
 
 ### on macOS  
 source venv/bin/activate
+
 venv should show at beginning of command prompt
 
 ### on Windows  
