@@ -5,8 +5,9 @@ import urllib.request
 # xml library is vulnerable to attacks (xml 'bombs') such as billion laughs
 # use defusedxml instead
 # https://pypi.python.org/pypi/defusedxml/
+# http://stackoverflow.com/questions/38454978/tastypie-usage-of-the-xml-aspects-requires-lxml-and-defusedxml
 # from xml.etree.ElementTree import parse
-from defusedxml.etree.ElementTree import parse
+from defusedxml.ElementTree import parse
 
 import webbrowser
 
