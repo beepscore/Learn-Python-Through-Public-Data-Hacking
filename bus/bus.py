@@ -11,6 +11,10 @@ from defusedxml.ElementTree import parse
 
 import webbrowser
 
+ID_KEY = "id"
+LATITUDE_KEY = "latitude"
+LONGITUDE_KEY = "longitude"
+DIRECTION_KEY = "direction"
 
 def download_buses(url_string, outfilename):
     u = urllib.request.urlopen(url_string)
@@ -21,42 +25,30 @@ def download_buses(url_string, outfilename):
     f.close()
 
 
-def bus_id(bus):
-    """ given bus element, returns id as text """
-
-    id_text = bus.find('id').text
-    return id_text
-
-
 def bus_is_northbound(bus):
-    """ given bus element, returns True if bus is Northbound """
+    """ given bus, returns True if bus is Northbound """
 
-    dd = bus.find('dd').text
-    return  dd is 'Northbound'
-
-
-def bus_latitude(bus):
-    """ given bus element, returns latitude """
-
-    latitude = float(bus.find('lat').text)
-    return latitude
+    return  bus[DIRECTION_KEY] is 'Northbound'
 
 
-def bus_longitude(bus):
-    """ given bus element, returns longitude """
-
-    longitude = float(bus.find('lon').text)
-    return longitude
+def bus(bus_element):
+    """ given a bus_element (an xml parsed element tree element), returns a bus dictionary """
+    dict = {}
+    dict[ID_KEY] = bus_element.find('id').text
+    dict[LATITUDE_KEY] = float(bus_element.find('lat').text)
+    dict[LONGITUDE_KEY] = float(bus_element.find('lon').text)
+    dict[DIRECTION_KEY] = bus_element.find('dd').text
+    return dict
 
 
 def find_buses(filename):
-    """ finds buses meeting criteria """
+    """ returns buses meeting criteria """
 
     # parse xml into a document tree
     doc = parse(filename)
 
     # find all bus elements
-    buses = doc.findall('bus')
+    bus_elements = doc.findall('bus')
 
     # TODO: change to tuple?
     daves_latitude = 41.98062
@@ -64,14 +56,13 @@ def find_buses(filename):
 
     selected_buses = []
 
-    for bus in buses:
-        latitude = bus_latitude(bus)
-        longitude = bus_longitude(bus)
+    for bus_element in bus_elements:
+        bus_from_element = bus(bus_element)
 
-        if latitude >= daves_latitude:
+        if bus_from_element[LATITUDE_KEY] >= daves_latitude:
             # bus id 4068 41.99755483598852
-            print('bus id:', bus_id(bus), 'latitude:', latitude, 'longitude:', longitude)
-            selected_buses.append(bus)
+            print(bus_from_element)
+            selected_buses.append(bus_from_element)
 
     return selected_buses
 
@@ -85,6 +76,6 @@ def map_buses(buses):
 
     for bus in buses:
         # f requires python >= 3.6
-        markers = f"&markers={bus_latitude(bus)}, {bus_longitude(bus)}"
+        markers = f"&markers={bus[LATITUDE_KEY]}, {bus[LONGITUDE_KEY]}"
         webbrowser.open(map_url_start + markers)
 
