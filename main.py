@@ -7,4 +7,4 @@ filename = 'data/output/rt22.xml'
 
 bus.download_buses(url_string, filename)
 
-# bus.find_buses(filename)
+bus.find_buses(filename)
