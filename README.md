@@ -26,6 +26,9 @@ activate virtual environment
 
 python3 -m main
 
+## output file
+Note the xml output file has one line, then many blank lines, then data.
+
 # Appendix virtual environment
 ### install virtual environment
 cd <project root directory>
