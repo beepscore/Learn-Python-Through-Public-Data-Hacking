@@ -1,10 +1,18 @@
 # Purpose
+Do tutorial Learn Python Through Public Data Hacking by David Beazley.  
 Practice using Python to download bus locations xml,
 write it to a file, parse it, find a bus.
 
 # References
+
 ## Learn Python Through Public Data Hacking by David Beazley
 https://www.youtube.com/watch?v=RrPZza_vZ3w
+http://www.dabeaz.com/pydata/LearnPyData.pdf
+
+## DigitalMockingbird
+Nicely organinzed repo based on Beazley's tutorial.  
+Could fork this, but I wanted to learn more by doing it myself!  
+https://github.com/DigitalMockingbird/Learn-Python-Through-Public-Data-Hacking
 
 ## defusedxml
 Python standard xml library is vulnerable to attacks (xml 'bombs') such as billion laughs
