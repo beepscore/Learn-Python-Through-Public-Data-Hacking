@@ -11,9 +11,6 @@ from defusedxml.ElementTree import parse
 
 import webbrowser
 
-url_string = 'http://ctabustracker.com/bustime/map/getBusesForRoute.jsp?route=22'
-filename = 'data/output/rt22.xml'
-
 
 def download_buses(url_string, outfilename):
     u = urllib.request.urlopen(url_string)
@@ -61,13 +58,11 @@ def find_buses(filename):
     # find all bus elements
     buses = doc.findall('bus')
 
-    # https://developers.google.com/maps/documentation/staticmaps/
-    # http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false&markers=41.98062,-87.668452
-    map_url_start = 'http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false'
-
     # TODO: change to tuple?
     daves_latitude = 41.98062
     daves_longitude = -87.668452
+
+    selected_buses = []
 
     for bus in buses:
         latitude = bus_latitude(bus)
@@ -75,9 +70,21 @@ def find_buses(filename):
 
         if latitude >= daves_latitude:
             # bus id 4068 41.99755483598852
-            print('bus id', bus_id(bus), latitude)
+            print('bus id:', bus_id(bus), 'latitude:', latitude, 'longitude:', longitude)
+            selected_buses.append(bus)
 
-            # f requires python >= 3.6
-            markers = f"&markers={latitude}, {longitude}"
-            webbrowser.open(map_url_start + markers)
+    return selected_buses
+
+
+def map_buses(buses):
+    """ opens browser with map image showing bus location """
+
+    # https://developers.google.com/maps/documentation/staticmaps/
+    # http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false&markers=41.98062,-87.668452
+    map_url_start = 'http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false'
+
+    for bus in buses:
+        # f requires python >= 3.6
+        markers = f"&markers={bus_latitude(bus)}, {bus_longitude(bus)}"
+        webbrowser.open(map_url_start + markers)
 
