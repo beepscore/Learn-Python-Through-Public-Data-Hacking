@@ -25,28 +25,28 @@ def download_buses(url_string, outfilename):
 
 
 def bus_id(bus):
-    """ given bus element, returns id as text"""
+    """ given bus element, returns id as text """
 
     id_text = bus.find('id').text
     return id_text
 
 
 def bus_is_northbound(bus):
-    """ given bus element, returns True if bus is Northbound"""
+    """ given bus element, returns True if bus is Northbound """
 
     dd = bus.find('dd').text
     return  dd is 'Northbound'
 
 
 def bus_latitude(bus):
-    """ given bus element, returns latitude"""
+    """ given bus element, returns latitude """
 
     latitude = float(bus.find('lat').text)
     return latitude
 
 
 def bus_longitude(bus):
-    """ given bus element, returns longitude"""
+    """ given bus element, returns longitude """
 
     longitude = float(bus.find('lon').text)
     return longitude
