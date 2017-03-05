@@ -16,6 +16,7 @@ LATITUDE_KEY = "latitude"
 LONGITUDE_KEY = "longitude"
 DIRECTION_KEY = "direction"
 
+
 def download_buses(url_string, outfilename):
     u = urllib.request.urlopen(url_string)
     data = u.read()
@@ -28,7 +29,7 @@ def download_buses(url_string, outfilename):
 def bus_is_northbound(bus):
     """ given bus, returns True if bus is Northbound """
 
-    return  bus[DIRECTION_KEY] is 'Northbound'
+    return bus[DIRECTION_KEY] is 'Northbound'
 
 
 def bus(bus_element):
