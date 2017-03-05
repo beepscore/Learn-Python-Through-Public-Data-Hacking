@@ -37,6 +37,15 @@ activate virtual environment
 ## output file
 Note the xml output file has one line, then many blank lines, then data.
 
+## Unit tests
+To run tests, open terminal shell.  
+cd to project directory. Run tests via python command or bash script.
+
+### python command
+This command lists and tests all modules
+
+python3 -m unittest tests.test_potholes
+
 # Appendix virtual environment
 ### install virtual environment
 cd project root directory  
