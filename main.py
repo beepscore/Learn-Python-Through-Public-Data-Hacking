@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from bus import bus
-from potholes import potholes
+# from potholes import potholes
 
 bus_url_string = 'http://ctabustracker.com/bustime/map/getBusesForRoute.jsp?route=22'
 bus_filename = 'data/output/rt22.xml'
@@ -15,4 +15,5 @@ def show_buses():
 # show_buses()
 
 # potholes
-holes = potholes.potholes_sorted('data/input/potholes.csv')
+# for sample output see test_potholes.py
+# holes = potholes.potholes_sorted('data/input/potholes.csv')
