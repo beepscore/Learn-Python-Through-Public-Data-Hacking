@@ -6,13 +6,18 @@ Practice using Python to download bus locations xml,
 write it to a file, parse it, find a bus.
 
 ## potholes
-Manually download pothole info csv.
+Manually download pothole data csv.
 Parse it, rank street addresses by potholiness.
+
+# food_inspections
+Manually download food inspection data csv.
+https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e5
 
 # References
 
 ## Learn Python Through Public Data Hacking by David Beazley
 https://www.youtube.com/watch?v=RrPZza_vZ3w  
+http://www.dabeaz.com/pydata
 http://www.dabeaz.com/pydata/LearnPyData.pdf
 
 ## DigitalMockingbird
