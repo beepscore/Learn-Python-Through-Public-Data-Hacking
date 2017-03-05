@@ -12,6 +12,7 @@
 # 01/01/2011,Completed,01/03/2011,11-00002021,Pot Hole in Street,Dispatch Crew,Pothole Patched,5,1642 W 99TH ST,60643,1166945.42467286,1839061.36263023,19,22,72,,41.71403466751051,-87.66509581640723,"(41.71403466751051, -87.66509581640723)"
 
 import csv
+from collections import OrderedDict
 
 STREET_ADDRESS = 'STREET ADDRESS'
 NUMBER_OF_POTHOLES_FILLED_ON_BLOCK = 'NUMBER OF POTHOLES FILLED ON BLOCK'
@@ -93,7 +94,5 @@ def potholes_sorted(filename):
     # sort by value, decreasing order
     # https://docs.python.org/3/library/collections.html#ordereddict-examples-and-recipes
     # http://stackoverflow.com/questions/613183/sort-a-python-dictionary-by-value (see comments)
-    # ordered = OrderedDict(sorted(potholes.items(), key=lambda t: t[1], reverse=True))
-    # return ordered
-
-    return potholes
+    ordered = OrderedDict(sorted(potholes.items(), key=lambda t: t[1], reverse=True))
+    return ordered
