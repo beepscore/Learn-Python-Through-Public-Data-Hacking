@@ -16,6 +16,7 @@ import csv
 STREET_ADDRESS = 'STREET ADDRESS'
 NUMBER_OF_POTHOLES_FILLED_ON_BLOCK = 'NUMBER OF POTHOLES FILLED ON BLOCK'
 
+
 def street_block(street_address):
     """ returns a block e.g. '438 W Main' returns 400 """
 
@@ -34,12 +35,11 @@ def street_address_tail(street_address):
 
 
 def street_block_address(street_address):
-    street_address_components = street_address.split()
     return str(street_block(street_address)) + ' ' + street_address_tail(street_address)
 
 
-def potholes_unsorted():
-    f = open('data/input/potholes.csv')
+def potholes_unsorted(filename):
+    f = open(filename)
 
     potholes = {}
 
@@ -48,11 +48,17 @@ def potholes_unsorted():
 
         street_address = row[STREET_ADDRESS]
         # Python dictionary key can be a string or an int
+        if street_address is None:
+            street_address = ''
         street_address_key = street_block_address(street_address)
 
-        try:
-            number_potholes_filled = row[NUMBER_OF_POTHOLES_FILLED_ON_BLOCK]
-        except ValueError:
+        # try:
+        #    number_potholes_filled = row[NUMBER_OF_POTHOLES_FILLED_ON_BLOCK]
+        # except ValueError:
+        #    number_potholes_filled = 0
+
+        number_potholes_filled = row[NUMBER_OF_POTHOLES_FILLED_ON_BLOCK]
+        if number_potholes_filled is None:
             number_potholes_filled = 0
 
         if potholes[street_address_key] is None:
@@ -61,6 +67,15 @@ def potholes_unsorted():
         else:
             potholes[street_address_key] += number_potholes_filled
 
+    f.close()
     return potholes
 
+
+def potholes_sorted(filename):
+    potholes = potholes_unsorted(filename)
+    # convert dict potholes to SortedDict
+    # sort by value, decreasing order
+    # https://docs.python.org/3/library/collections.html#ordereddict-examples-and-recipes
+    # http://stackoverflow.com/questions/613183/sort-a-python-dictionary-by-value (see comments)
+    return OrderedDict(sorted(potholes.items(), key=lambda t: t[1], reverse=True))
 
