@@ -1,7 +1,13 @@
 # Purpose
 Do tutorial Learn Python Through Public Data Hacking by David Beazley.  
+
+## bus
 Practice using Python to download bus locations xml,
 write it to a file, parse it, find a bus.
+
+## potholes
+Manually download pothole info csv.
+Parse it, rank street addresses by potholiness.
 
 # References
 
