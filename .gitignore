@@ -120,5 +120,6 @@ crashlytics-build.properties
 venv/*
 
 # program data files
-data/*
-
+data/input/*
+!data/input/rt22_test.xml
+data/output/*
