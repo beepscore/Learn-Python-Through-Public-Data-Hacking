@@ -19,9 +19,16 @@ class TestPotholes(unittest.TestCase):
     def test_street_block_address(self):
         self.assertEqual(potholes.street_block_address('419 W. Belvedere'), '400 W. Belvedere')
 
-    #def test_potholes_sorted(self):
-    #    holes = potholes.potholes_sorted('data/input/potholes.csv')
-    #    self.assertEqual(holes.items[0], 'foo')
+    def test_potholes_sorted(self):
+        holes = potholes.potholes_sorted('data/input/potholes.csv')
+        # http://stackoverflow.com/questions/30250715/how-do-you-get-the-first-3-elements-in-python-ordereddict#30250803
+        self.assertEqual(list(holes.items())[0], ('6400 S ASHLAND AVE', 3280))
+        self.assertEqual(list(holes.items())[1], ('4900 S ASHLAND AVE', 2491))
+        self.assertEqual(list(holes.items())[2], ('4800 S ASHLAND AVE', 2472))
+        self.assertEqual(list(holes.items())[3], ('7100 W ARCHER AVE', 2342))
+        self.assertEqual(list(holes.items())[4], ('4500 S ASHLAND AVE', 2273))
+        self.assertEqual(list(holes.items())[5], ('8100 S MARYLAND AVE', 1911))
 
 if __name__ == "__main__":
-    u
+    unittest.main()
+
