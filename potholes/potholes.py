@@ -43,8 +43,7 @@ def street_block_address(street_address):
     return str(street_block(street_address)) + ' ' + street_address_tail(street_address)
 
 
-def number_potholes_filled(row):
-    number_potholes_filled_string = row[NUMBER_OF_POTHOLES_FILLED_ON_BLOCK]
+def number_potholes_filled(number_potholes_filled_string):
     if number_potholes_filled_string is None or number_potholes_filled_string == '':
         potholes_filled = 0
     else:
@@ -74,7 +73,8 @@ def potholes_unsorted(filename):
             street_address = ''
         street_address_key = street_block_address(street_address)
 
-        potholes_filled = number_potholes_filled(row)
+        number_potholes_filled_string = row[NUMBER_OF_POTHOLES_FILLED_ON_BLOCK]
+        potholes_filled = number_potholes_filled(number_potholes_filled_string)
 
         if street_address_key not in potholes:
             # not in dictionary, so add it

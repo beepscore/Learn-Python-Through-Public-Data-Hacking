@@ -9,7 +9,6 @@ class TestPotholes(unittest.TestCase):
     def test_street_block(self):
         self.assertEqual(potholes.street_block('438 W. Belvedere'), 400)
         self.assertEqual(potholes.street_block('9856 Fooby Way'), 9800)
-        # file line 129810
         self.assertEqual(potholes.street_block('1 E MONROE ST'), 0)
 
     def test_street_address_tail(self):
@@ -18,6 +17,12 @@ class TestPotholes(unittest.TestCase):
 
     def test_street_block_address(self):
         self.assertEqual(potholes.street_block_address('419 W. Belvedere'), '400 W. Belvedere')
+
+    def test_number_potholes_filled(self):
+        # input file line 129812 (DictReader row 129810) has ,,,,
+        self.assertEqual(potholes.number_potholes_filled(''), 0)
+        # file line like 151744 (DictReader row 151742) number_potholes_filled_string '0.3'
+        self.assertEqual(potholes.number_potholes_filled('0.3'), 0)
 
     def test_potholes_sorted(self):
         holes = potholes.potholes_sorted('data/input/potholes.csv')
