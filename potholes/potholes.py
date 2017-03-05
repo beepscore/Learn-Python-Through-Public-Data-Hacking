@@ -19,7 +19,7 @@ NUMBER_OF_POTHOLES_FILLED_ON_BLOCK = 'NUMBER OF POTHOLES FILLED ON BLOCK'
 
 
 def street_block(street_address):
-    """ returns a block e.g. '438 W Main' returns 400 """
+    """ returns thousands in address to indicate a 10 block range e.g. '12345 W Main' returns 12000 """
 
     # handle file line like 129812 (DictReader row 129810) field is empty ,,,,
     if street_address is None or street_address == '':
@@ -28,7 +28,8 @@ def street_block(street_address):
     street_address_components = street_address.split()
     street_address0_int = int(street_address_components[0])
     # integer division. Alternatively could subtract modulo
-    return (street_address0_int // 100) * 100
+    address_range = 1000
+    return (street_address0_int // address_range) * address_range
 
 
 def street_address_tail(street_address):
