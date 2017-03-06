@@ -54,6 +54,7 @@ cd to project directory. Run tests via python command or bash script.
 
     python3 -m unittest tests.test_bus
     python3 -m unittest tests.test_potholes
+    python3 -m unittest tests.test_food_inspections
 
 ### python command
 This command lists and tests all modules
