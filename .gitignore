@@ -116,6 +116,9 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+# ipython notebook checkpoints
+.ipynb_checkpoints
+
 # virtual environment files
 venv/*
 
