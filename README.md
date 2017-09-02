@@ -65,6 +65,26 @@ alternatively, can supply test module names as args
     python3 -m unittest tests.test_potholes
     python3 -m unittest tests.test_food_inspections
     
+## jupyter notebook
+Some projects have a jupyter notebook.
+
+#### activate conda environment
+In terminal  
+
+    cd Learn-Python-Through-Public-Data-Hacking
+    source activate lptpdh
+
+#### start
+    jupyter notebook
+
+    The Jupyter Notebook is running at: http://localhost:8888/?token=cfd...
+    [I 13:14:22.656 NotebookApp] Use Control-C to stop this server
+
+Browser shows 3 notebook files
+
+    - food_inspections.ipynb
+    - inspections.ipynb
+    - potholes.ipynb
 
 # Appendix virtual environment and requirements
 
