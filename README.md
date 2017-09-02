@@ -69,10 +69,13 @@ alternatively, can supply test module names as args
 Some projects have a jupyter notebook.
 
 #### activate conda environment
+##### 2017-09-02
+Using Anaconda 4.4.0 which comes with Python 3.6.1
+
 In terminal  
 
     cd Learn-Python-Through-Public-Data-Hacking
-    source activate lptpdh
+    source activate root
 
 #### start
     jupyter notebook
@@ -85,6 +88,8 @@ Browser shows 3 notebook files
     - food_inspections.ipynb
     - inspections.ipynb
     - potholes.ipynb
+
+Ran food_inspections test and inspections.
 
 # Appendix virtual environment and requirements
 
